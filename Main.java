@@ -19,6 +19,12 @@ public class Main {
         System.out.println("stones sorted by price: " + necklace.getStonesSortedByPrice()); // diamond2, diamond1, topaz1, topaz2
         System.out.println("5 <= transparency <= 7: " + necklace.getStonesByTransparency(5, 7)); // diamond1, topaz1
 
+        // polymorphism
+        Stone diamond = new Diamond(70, 4, 1);
+        Stone topaz = new Topaz(20, 4, 1);
+        System.out.println("**** Polymorphism ***");
+        System.out.println("Description :" + diamond.getDescription());
+        System.out.println("Description :" + topaz.getDescription());
     }
 
 }

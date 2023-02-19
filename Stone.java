@@ -22,6 +22,10 @@ public abstract class Stone {
         return transparency;
     }
 
+    public String getDescription() {
+        return "This is stone.";
+    }
+
     @Override
     public String toString() {
         return String.format("%s {price=%s, carats=%s, transparency=%s}",
