@@ -3,6 +3,7 @@ public class Topaz extends SemipreciousStone {
         super(price, carats, transparency);
     }
 
+    @Override
     public String getDescription() {
         return "This is topaz.";
     }

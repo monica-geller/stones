@@ -2,7 +2,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 import static java.util.Comparator.comparingInt;
-//import static java.util.stream.Collectors.toList;
 
 public class Necklace {
 

@@ -3,6 +3,7 @@ public class Diamond extends GemStone {
         super(price, carats, transparency);
     }
 
+    @Override
     public String getDescription() {
         return "This is diamond.";
     }
