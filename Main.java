@@ -5,6 +5,7 @@ public class Main {
     public static void main(String[] args) {
 
         testNecklaceMethods();
+        testStoneMethods();
         testPolymorphism();
     }
 
@@ -28,6 +29,17 @@ public class Main {
         System.out.println("Necklace equals true: " + necklace.equals(theSameNecklace));
         System.out.println("Necklace equals false: " + necklace.equals(otherNecklace));
 
+    }
+
+    private static void testStoneMethods() {
+        Stone diamond = new Diamond(100, 20, 5);
+        Stone theSameDiamond = new Diamond(100, 20, 5);
+        Stone otherDiamond = new Diamond(100, 20, 6);
+
+        System.out.println("stone toString: " + diamond.toString());
+        System.out.println("stone hashCode: " + diamond.hashCode());
+        System.out.println("stone equals true: " + diamond.equals(theSameDiamond));
+        System.out.println("stone equals false: " + diamond.equals(otherDiamond));
     }
 
     private static void testPolymorphism() {
