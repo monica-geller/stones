@@ -1,5 +1,6 @@
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 import static java.util.Comparator.comparingInt;
 
@@ -8,7 +9,8 @@ public class Necklace {
     private final List<Stone> stones;
 
     public Necklace(List<Stone> stones) {
-        this.stones = stones;
+        // Objects.requireNonNull to avoid NullPointerException in all methods
+        this.stones = Objects.requireNonNull(stones);
     }
 
     public int getCarats() {
@@ -57,4 +59,28 @@ public class Necklace {
         // return stones.stream().filter(s -> from <= s.getTransparency() && s.getTransparency() <= to).collect(toList());
     }
 
+    @Override
+    public String toString() {
+        return "Necklace{stones=" + stones + '}';
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) {
+            return true;
+        }
+
+        if (o == null || getClass() != o.getClass()) {
+            return false;
+        }
+
+        Necklace necklace = (Necklace) o;
+
+        return stones.equals(necklace.stones);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(stones);
+    }
 }
