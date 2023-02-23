@@ -74,9 +74,9 @@ public class Necklace {
             return false;
         }
 
-        Necklace necklace = (Necklace) o;
+        Necklace other = (Necklace) o;
 
-        return stones.equals(necklace.stones);
+        return stones.equals(other.stones);
     }
 
     @Override
