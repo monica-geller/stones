@@ -1,7 +1,7 @@
 public class Topaz extends SemipreciousStone {
 
     public Topaz(int price, int carats, int transparency) {
-        super("Topaz", price, carats, transparency);
+        super(price, carats, transparency);
     }
 
     @Override
