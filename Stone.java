@@ -8,7 +8,7 @@ public abstract class Stone {
     protected int transparency;
 
     public Stone(String name, int price, int carats, int transparency) {
-        this.name = name;
+        this.name = Objects.requireNonNull(name);
         this.price = price;
         this.carats = carats;
         this.transparency = transparency;
