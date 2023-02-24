@@ -84,7 +84,8 @@ public class Main {
         Necklace necklace2 = (Necklace) ois.readObject();
         ois.close();
 
-        System.out.println("Serialization necklace: " + necklace.equals(necklace2));
+        System.out.println("Serialization necklace: " + necklace);
+        System.out.println("Serialization necklace2: " + necklace2);
     }
 
 }
