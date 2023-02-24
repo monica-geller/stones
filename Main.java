@@ -62,7 +62,8 @@ public class Main {
         Stone stone2 = (Stone) ois.readObject();
         ois.close();
 
-        System.out.println("Serialization stone: " + stone.equals(stone2));
+        System.out.println("Serialization stone: " + stone);
+        System.out.println("Serialization stone2: " + stone2);
     }
 
     private static void testNecklaceSerialization() throws Exception {
