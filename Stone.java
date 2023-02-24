@@ -2,14 +2,24 @@ import java.util.Objects;
 
 public abstract class Stone {
 
+    protected String name;
     protected int price;
     protected int carats;
     protected int transparency;
 
-    public Stone(int price, int carats, int transparency) {
+    public Stone(String name, int price, int carats, int transparency) {
+        this.name = name;
         this.price = price;
         this.carats = carats;
         this.transparency = transparency;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
     }
 
     public int getPrice() {
@@ -36,12 +46,9 @@ public abstract class Stone {
         this.transparency = transparency;
     }
 
-    public abstract String getType();
-
     @Override
     public String toString() {
-        return String.format("Stone{type=%s, price=%s, carats=%s, transparency=%s}",
-                getType(), price, carats, transparency);
+        return String.format("Stone{name=%s, price=%s, carats=%s, transparency=%s}", name, price, carats, transparency);
     }
 
     @Override
@@ -56,14 +63,14 @@ public abstract class Stone {
 
         Stone other = (Stone) o;
 
-        return price == other.price
+        return name.equals(other.name)
+                && price == other.price
                 && carats == other.carats
-                && transparency == other.transparency
-                && getType().equals(other.getType());
+                && transparency == other.transparency;
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(price, carats, transparency, getType());
+        return Objects.hash(name, price, carats, transparency);
     }
 }
