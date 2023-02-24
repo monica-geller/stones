@@ -1,10 +1,13 @@
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
 import static java.util.Comparator.comparingInt;
 
-public class Necklace {
+public class Necklace implements Serializable {
+
+    private static final long serialVersionUID = 1L;
 
     private final List<Stone> stones;
 
