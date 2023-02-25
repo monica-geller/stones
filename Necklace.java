@@ -47,7 +47,7 @@ public class Necklace implements Serializable, Cloneable {
         sortedStones.sort(comparingInt(Stone::getPrice).reversed());
         return sortedStones;
 
-//         return stones.stream().sorted(comparingInt(Stone::getPrice).reversed()).collect(toList());
+        // return stones.stream().sorted(comparingInt(Stone::getPrice).reversed()).collect(toList());
     }
 
     public List<Stone> getStonesByTransparency(int from, int to) {
