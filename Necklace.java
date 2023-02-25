@@ -18,6 +18,10 @@ public class Necklace implements Serializable, Cloneable {
         this.stones = Objects.requireNonNull(stones);
     }
 
+    public List<Stone> getStones() {
+        return stones;
+    }
+
     public int getCarats() {
         int carats = 0;
 
