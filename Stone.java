@@ -1,7 +1,7 @@
 import java.io.Serializable;
 import java.util.Objects;
 
-public abstract class Stone implements Serializable {
+public abstract class Stone implements Serializable, Cloneable {
 
     private static final long serialVersionUID = 1L;
 
@@ -75,5 +75,11 @@ public abstract class Stone implements Serializable {
     @Override
     public int hashCode() {
         return Objects.hash(name, price, carats, transparency);
+    }
+
+
+    @Override
+    public Stone clone() throws CloneNotSupportedException {
+        return (Stone) super.clone();
     }
 }

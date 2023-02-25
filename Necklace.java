@@ -5,7 +5,7 @@ import java.util.Objects;
 
 import static java.util.Comparator.comparingInt;
 
-public class Necklace implements Serializable {
+public class Necklace implements Serializable, Cloneable {
 
     private static final long serialVersionUID = 1L;
 
@@ -85,5 +85,10 @@ public class Necklace implements Serializable {
     @Override
     public int hashCode() {
         return Objects.hash(stones);
+    }
+
+    @Override
+    public Necklace clone() throws CloneNotSupportedException {
+        return (Necklace) super.clone();
     }
 }

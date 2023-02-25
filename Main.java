@@ -8,11 +8,14 @@ public class Main {
 
     public static void main(String[] args) throws Exception {
 
-        testNecklaceMethods();
         testStoneMethods();
+        testNecklaceMethods();
 
         testStoneSerialization();
         testNecklaceSerialization();
+
+        testStoneCloneable();
+        testNecklaceCloneable();
     }
 
     private static void testNecklaceMethods() {
@@ -86,6 +89,23 @@ public class Main {
 
         System.out.println("Serialization necklace: " + necklace);
         System.out.println("Serialization necklace2: " + necklace2);
+    }
+
+    private static void testStoneCloneable() throws Exception {
+        Stone stone1 = new GemStone("Diamond", 100, 5, 5);
+        Stone stone2 = stone1.clone();
+
+        System.out.println(stone1.equals(stone2));
+    }
+
+    private static void testNecklaceCloneable() throws Exception {
+        Stone stone1 = new GemStone("Diamond", 100, 5, 5);
+        Stone stone2 = new GemStone("Topaz", 100, 5, 5);
+
+        Necklace necklace1 = new Necklace(Arrays.asList(stone1, stone2));
+        Necklace necklace2 = necklace1.clone();
+
+        System.out.println(necklace1.equals(necklace2));
     }
 
 }
