@@ -2,6 +2,7 @@ import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
+import java.util.stream.Collectors;
 
 import static java.util.Comparator.comparingInt;
 
@@ -89,6 +90,11 @@ public class Necklace implements Serializable, Cloneable {
 
     @Override
     public Necklace clone() throws CloneNotSupportedException {
-        return (Necklace) super.clone();
+        List<Stone> clonedStones = new ArrayList<>(stones.size());
+        for (Stone stone : stones) {
+            clonedStones.add(stone.clone());
+        }
+
+        return new Necklace(clonedStones);
     }
 }
