@@ -91,14 +91,14 @@ public class Main {
         System.out.println("Serialization necklace2: " + necklace2);
     }
 
-    private static void testStoneCloneable() throws Exception {
+    private static void testStoneCloneable() {
         Stone stone1 = new GemStone("Diamond", 100, 5, 5);
         Stone stone2 = stone1.clone();
 
         System.out.println(stone1.equals(stone2));
     }
 
-    private static void testNecklaceCloneable() throws Exception {
+    private static void testNecklaceCloneable() {
         Stone stone1 = new GemStone("Diamond", 100, 5, 5);
         Stone stone2 = new GemStone("Topaz", 100, 5, 5);
 

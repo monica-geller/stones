@@ -5,6 +5,7 @@ import java.util.Objects;
 import java.util.stream.Collectors;
 
 import static java.util.Comparator.comparingInt;
+import static java.util.stream.Collectors.toList;
 
 public class Necklace implements Serializable, Cloneable {
 
@@ -89,15 +90,21 @@ public class Necklace implements Serializable, Cloneable {
     }
 
     @Override
-    public Necklace clone() throws CloneNotSupportedException {
+    public Necklace clone() {
         List<Stone> clonedStones = new ArrayList<>(stones.size());
         for (Stone stone : stones) {
             clonedStones.add(stone.clone());
         }
+        // List<Stone> clonedStones = stones.stream().map(Stone::clone).collect(toList());
 
-        Necklace necklace = (Necklace) super.clone();
-        necklace.stones = clonedStones;
+        try {
+            Necklace necklace = (Necklace) super.clone();
+            necklace.stones = clonedStones;
 
-        return necklace;
+            return necklace;
+
+        } catch (CloneNotSupportedException e) {
+            throw new AssertionError();
+        }
     }
 }

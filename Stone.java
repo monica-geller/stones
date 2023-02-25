@@ -79,7 +79,11 @@ public abstract class Stone implements Serializable, Cloneable {
 
 
     @Override
-    public Stone clone() throws CloneNotSupportedException {
-        return (Stone) super.clone();
+    public Stone clone() {
+        try {
+            return (Stone) super.clone();
+        } catch (CloneNotSupportedException e) {
+            throw new AssertionError();
+        }
     }
 }
