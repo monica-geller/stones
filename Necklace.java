@@ -10,7 +10,7 @@ public class Necklace implements Serializable, Cloneable {
 
     private static final long serialVersionUID = 1L;
 
-    private final List<Stone> stones;
+    private List<Stone> stones;
 
     public Necklace(List<Stone> stones) {
         // Objects.requireNonNull to avoid NullPointerException in all methods
@@ -95,6 +95,9 @@ public class Necklace implements Serializable, Cloneable {
             clonedStones.add(stone.clone());
         }
 
-        return new Necklace(clonedStones);
+        Necklace necklace = (Necklace) super.clone();
+        necklace.stones = clonedStones;
+
+        return necklace;
     }
 }
