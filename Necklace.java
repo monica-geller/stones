@@ -51,7 +51,7 @@ public class Necklace implements Serializable, Cloneable {
         sortedStones.sort(comparingInt(Stone::getPrice).reversed());
         return sortedStones;
 
-        // return stones.stream().sorted(comparingInt(Stone::getPrice).reversed()).collect(toList());
+        // return stones.stream().sorted(comparingInt(Stone::getPrice).reversed()).toList();
     }
 
     public List<Stone> getStonesByTransparency(int from, int to) {
@@ -65,7 +65,7 @@ public class Necklace implements Serializable, Cloneable {
 
         return filteredStones;
 
-        // return stones.stream().filter(s -> from <= s.getTransparency() && s.getTransparency() <= to).collect(toList());
+        // return stones.stream().filter(s -> from <= s.getTransparency() && s.getTransparency() <= to).toList();
     }
 
     @Override
@@ -99,7 +99,7 @@ public class Necklace implements Serializable, Cloneable {
         for (Stone stone : stones) {
             clonedStones.add(stone.clone());
         }
-        // List<Stone> clonedStones = stones.stream().map(Stone::clone).collect(toList());
+        // List<Stone> clonedStones = stones.stream().map(Stone::clone).toList();
 
         try {
             Necklace necklace = (Necklace) super.clone();
