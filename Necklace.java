@@ -22,6 +22,10 @@ public class Necklace implements Serializable, Cloneable {
         return stones;
     }
 
+    public void add(Stone stone) {
+        stones.add(stone);
+    }
+
     public int getCarats() {
         int carats = 0;
 
