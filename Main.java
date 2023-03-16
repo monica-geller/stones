@@ -1,4 +1,5 @@
 import java.util.ArrayList;
+import java.util.List;
 import java.util.Scanner;
 
 public class Main {
@@ -6,41 +7,62 @@ public class Main {
     public static void main(String[] args) {
         Scanner in = new Scanner(System.in);
 
+        List<Stone> allStones = new ArrayList<>();
         Necklace necklace = new Necklace(new ArrayList<>());
 
         String choice = "";
-        while (!choice.equals("8")) {
+        while (!choice.equals("10")) {
             showMenu();
             choice = in.next();
-            handleChoice(in, choice, necklace);
+            handleChoice(in, choice, allStones, necklace);
         }
     }
 
     private static void showMenu() {
         System.out.print("""
             Доступые команды:
-            1. Добавить дрогаценный камень
-            2. Добавить полудрогаценный камень
-            3. Вывести список камней в ожерелье
-            4. Подсчитать общий вес (в каратах)
-            5. Подсчитать стоимость ожерелья
-            6. Сортировать на основе ценности
-            7. Найти камни по диапозону параметров прозрачности
-            8. Выход
+            1. Создать дрогаценный камень
+            2. Создать полудрогаценный камень
+            3. Вывести созданные камни
+            4. Отобрать камни для ожерелья
+            5. Вывести список камней в ожерелье
+            6. Подсчитать общий вес (в каратах)
+            7. Подсчитать стоимость ожерелья
+            8. Сортировать на основе ценности
+            9. Найти камни по диапозону параметров прозрачности
+            10. Выход
             Ваш выбор:"""
         );
     }
 
-    private static void handleChoice(Scanner in, String choice, Necklace necklace) {
+    private static void handleChoice(Scanner in, String choice, List<Stone> allStones, Necklace necklace) {
         switch (choice) {
-            case "1", "2" -> necklace.add(createStone(in, choice));
-            case "3" -> System.out.println(necklace.getStones());
-            case "4" -> System.out.println("Вес ожерелья: " + necklace.getCarats());
-            case "5" -> System.out.println("Стоимость ожерелья: " + necklace.getPrice());
-            case "6" -> System.out.println(necklace.getStonesSortedByPrice());
-            case "7" -> showByTransparency(in, necklace);
-            case "8" -> System.out.println("Выходим...");
+            case "1", "2" -> allStones.add(createStone(in, choice));
+            case "3" -> showStones(allStones);
+            case "4" -> chooseStonesForNecklace(in, allStones, necklace);
+            case "5" -> System.out.println(necklace.getStones());
+            case "6" -> System.out.println("Вес ожерелья: " + necklace.getCarats());
+            case "7" -> System.out.println("Стоимость ожерелья: " + necklace.getPrice());
+            case "8" -> System.out.println(necklace.getStonesSortedByPrice());
+            case "9" -> showByTransparency(in, necklace);
+            case "10" -> System.out.println("Выходим...");
             default -> System.out.println("Неизвестная команда.");
+        }
+    }
+
+    private static void showStones(List<Stone> stones) {
+        for (int i = 0; i < stones.size(); i++) {
+            System.out.println((i + 1) + ": " + stones.get(i));
+        }
+    }
+
+    private static void chooseStonesForNecklace(Scanner in, List<Stone> stones, Necklace necklace) {
+        System.out.print("Введите номера камней через запятую: ");
+        String[] stoneIndexes = in.next().split(",");
+
+        for (String index : stoneIndexes) {
+            Stone stone = stones.get(Integer.parseInt(index) - 1);
+            necklace.add(stone);
         }
     }
 
