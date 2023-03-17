@@ -37,7 +37,7 @@ public class Main {
 
     private static void handleChoice(Scanner in, String choice, List<Stone> allStones, Necklace necklace) {
         switch (choice) {
-            case "1", "2" -> allStones.add(createStone(in, choice));
+            case "1", "2" -> addStone(in, choice, allStones);
             case "3" -> printStones(allStones);
             case "4" -> chooseStonesForNecklace(in, allStones, necklace);
             case "5" -> printStones(necklace.getStones());
@@ -50,17 +50,7 @@ public class Main {
         }
     }
 
-    private static void chooseStonesForNecklace(Scanner in, List<Stone> stones, Necklace necklace) {
-        System.out.print("Введите номера камней через запятую: ");
-        String[] stoneIndexes = in.next().split(",");
-
-        for (String index : stoneIndexes) {
-            Stone stone = stones.get(Integer.parseInt(index) - 1);
-            necklace.add(stone);
-        }
-    }
-
-    private static Stone createStone(Scanner in, String choice) {
+    private static void addStone(Scanner in, String choice, List<Stone> allStones) {
         System.out.print("Введите имя: ");
         String name = in.next();
 
@@ -73,9 +63,26 @@ public class Main {
         System.out.print("Введите прозрачность: ");
         int transparency = in.nextInt();
 
-        return choice.equals("1")
+        boolean isGemStone = choice.equals("1");
+
+        Stone stone = isGemStone
                 ? new GemStone(name, price, carats, transparency)
                 : new SemipreciousStone(name, price, carats, transparency);
+
+        allStones.add(stone);
+
+        String type = isGemStone ? "дрогаценный" : "полудрогаценный" ;
+        System.out.println("Вы добавили " + type + " камень: " + stone);
+    }
+
+    private static void chooseStonesForNecklace(Scanner in, List<Stone> stones, Necklace necklace) {
+        System.out.print("Введите номера камней через запятую: ");
+        String[] stoneIndexes = in.next().split(",");
+
+        for (String index : stoneIndexes) {
+            Stone stone = stones.get(Integer.parseInt(index) - 1);
+            necklace.add(stone);
+        }
     }
 
     private static void showByTransparency(Scanner in, Necklace necklace) {
@@ -88,15 +95,10 @@ public class Main {
         printStones(necklace.getStonesByTransparency(from, to));
     }
 
-
     public static void printStones(List<Stone> stones) {
         int i = 0;
         for (Stone stone : stones) {
-            System.out.printf("%d. %s - цена(в долларах): %d, вес(в каратах): %d,  параметр прозрачности: %d%n",
-                    ++i,
-                    stone.getName(), stone.getPrice(),
-                    stone.getCarats(), stone.getTransparency()
-            );
+            System.out.println(++i + ": " + stone);
         }
     }
 

@@ -51,7 +51,7 @@ public abstract class Stone implements Serializable, Cloneable {
 
     @Override
     public String toString() {
-        return String.format("Stone{name=%s, price=%s, carats=%s, transparency=%s}", name, price, carats, transparency);
+        return String.format("name=%s, price=%s, carats=%s, transparency=%s", name, price, carats, transparency);
     }
 
     @Override
