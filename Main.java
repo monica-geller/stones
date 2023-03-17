@@ -38,21 +38,15 @@ public class Main {
     private static void handleChoice(Scanner in, String choice, List<Stone> allStones, Necklace necklace) {
         switch (choice) {
             case "1", "2" -> allStones.add(createStone(in, choice));
-            case "3" -> showStones(allStones);
+            case "3" -> printStones(allStones);
             case "4" -> chooseStonesForNecklace(in, allStones, necklace);
-            case "5" -> System.out.println(necklace.getStones());
+            case "5" -> printStones(necklace.getStones());
             case "6" -> System.out.println("Вес ожерелья: " + necklace.getCarats());
             case "7" -> System.out.println("Стоимость ожерелья: " + necklace.getPrice());
-            case "8" -> System.out.println(necklace.getStonesSortedByPrice());
+            case "8" -> printStones(necklace.getStonesSortedByPrice());
             case "9" -> showByTransparency(in, necklace);
             case "10" -> System.out.println("Выходим...");
             default -> System.out.println("Неизвестная команда.");
-        }
-    }
-
-    private static void showStones(List<Stone> stones) {
-        for (int i = 0; i < stones.size(); i++) {
-            System.out.println((i + 1) + ": " + stones.get(i));
         }
     }
 
@@ -91,7 +85,19 @@ public class Main {
         System.out.print("Введите максимальный параметр прозрачности: ");
         int to = in.nextInt();
 
-        System.out.println(necklace.getStonesByTransparency(from, to));
+        printStones(necklace.getStonesByTransparency(from, to));
+    }
+
+
+    public static void printStones(List<Stone> stones) {
+        int i = 0;
+        for (Stone stone : stones) {
+            System.out.printf("%d. %s - цена(в долларах): %d, вес(в каратах): %d,  параметр прозрачности: %d%n",
+                    ++i,
+                    stone.getName(), stone.getPrice(),
+                    stone.getCarats(), stone.getTransparency()
+            );
+        }
     }
 
 }
